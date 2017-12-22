@@ -17,5 +17,5 @@ However, the computational complexity of decrypting said keystore is necessarily
 # How is metacrypto different?
 
 - The keystore file is generated first from random-noise, and your passwords *must* be generated from that.
-- instead of using a Skeleton-Key to decrypt your keystore, you'll use line-numbers + regex extracts characters from the noise-file keystore allowing you to generate your passwords from the noise on-the-fly.
+- instead of using a Skeleton-Key to decrypt your keystore, you'll use line-numbers + regex to extract characters from the noise-file keystore, thus allowing you to generate/extract your passwords from it on-the-fly.
 - This means the computational complexity of decrypting a metacrypto keystore file is `==` O(n^n), as all relevant decryption patterns reside *only* within your regex skeleton-key.
