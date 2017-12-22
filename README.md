@@ -8,7 +8,9 @@ A novel credential generation & obfuscation mechanism using giant files full of 
 
 # What does a typical keystore look like?
 When you want to store passwords, you'll put them in some kind of keystore-file, which is itself encrypted.
+
 That's a relatively safe mechanism for storing preexisting passwords, & in fact it's the industry standard.
+
 However, the computational complexity of decrypting said keystore is necessarily `<` O(n^n), because there is a necessarily a pattern in your resultant keystore (albeit an impressively obfuscated one if you're using a standard like Twofish, Blowfish, or AES256.)
 
 
