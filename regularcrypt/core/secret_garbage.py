@@ -7,7 +7,7 @@ try:
     import secrets as s
 except ImportError:
     print("WARNING: YOU ARE USING PYTHON2, THIS MEANS YOU DON'T HAVE ACCESS TO THE `secrets` PACKAGE.\nUSING `random` AS A REPLACEMENT")
-    import random as s
+    import random as s # random.choice() is a thing. which is all we're using `s` for here.
 
 __doc__ = """
 This module creates a file full'a garbage.
@@ -36,7 +36,7 @@ def _gen_random_printables(num_chars=500, line_length=32, validator=None):
 
     while _chars_generated < num_chars + 1: # This is gonna be a generator to avoid accidental blue-screens.
         _chars_generated += 1
-        if line_length is not None and _current_line_length > line_length: # if not None, insert an `os.linesep` before continuing.
+        if line_length is not None and _current_line_length > line_length: # test if we're done with a line, then insert an `os.linesep` before continuing.
             _current_line_length = 0
             yield os.linesep
         else:
