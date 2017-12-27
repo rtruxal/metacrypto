@@ -23,5 +23,6 @@ class SecretGarbageValidator(object):
     def validate_output_param(output_type):
         # NOTICE THE `and output_type in ('raw', 'lines')`.
         # YOU CAN ONLY CHOOSE TO GET BACK A RAW STRING, OR GET A LIST OF LINES.
+        
         assert isinstance(output_type, str) and output_type in ('raw', 'lines'), \
             "Your options for output_type are \n`raw` <default>: Gives back a string with \\n or some analog @ the specified line-length interval.\n\nOR\n\n`lines`: Named after `.writelines()`, it gives you back a list of strings of equal length."
