@@ -25,3 +25,17 @@ class SecretGarbageValidator(object):
         # YOU CAN ONLY CHOOSE TO GET BACK A RAW STRING, OR GET A LIST OF LINES.
         assert isinstance(output_type, str) and output_type in ('raw', 'lines'), \
             "Your options for output_type are \n`raw` <default>: Gives back a string with \\n or some analog @ the specified line-length interval.\n\nOR\n\n`lines`: Named after `.writelines()`, it gives you back a list of strings of equal length."
+
+
+class TranslatorsValidator(object):
+    def __init__(self):
+        super(TranslatorsValidator, self).__init__()
+
+    @staticmethod
+    def validate_garbage_saver_init_types(keystore_model, outfile_name):
+        assert isinstance(outfile_name, str) and isinstance(keystore_model, (str, list)), \
+            "Your filename or keystore file is the wrong type. See the GarbageSaver() class docstring."
+        if isinstance(keystore_model, list):
+            for line in keystore_model:
+                assert isinstance(line, str), \
+                    "one of the items given to you by secret_garbage.py is not a string. Something is seriously wrong."
