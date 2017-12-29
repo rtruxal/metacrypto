@@ -9,10 +9,10 @@ class SecretGarbageValidator(object):
         if num_chars > 100000 and not permissible:
             raise TooBigError("You're trying to generate over 100,000 characters in a non-concurrent manner. This will probably crash your laptop.")
         assert isinstance(num_chars, int) and num_chars > 0, \
-            'Please enter a valid number for `num_chars` in `regularcrypt/core/secret_garbage._gen_random_printables()`'
+            'Please enter a valid number for `num_chars` in `regularcrypt/core/secret_garbage._gen_keystore_string()`'
         if line_length is not None:
             assert isinstance(line_length, int) and line_length > 0, \
-                'Please enter `None` or a valid number for `line_length` in `regularcrypt/core/secret_garbage._gen_random_printables()`'
+                'Please enter `None` or a valid number for `line_length` in `regularcrypt/core/secret_garbage._gen_keystore_string()`'
 
     @staticmethod
     def validate_line_related_params(line_lenth_arg, output_type):
