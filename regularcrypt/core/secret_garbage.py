@@ -141,15 +141,15 @@ def gen_default_keystore(validate=True, output='lines'):
     if validate:
         SecretGarbageValidator.validate_output_param(output)
     if output == 'raw':
-        res = _gen_keystore_string(num_chars=500, line_length=32,validate=validate)
+        res = _gen_keystore_string(num_chars=1024, line_length=32,validate=validate)
         return ''.join(res)
     elif output == 'lines':
-        res = _gen_keystore_list(num_chars=500, line_length=32, validate=validate)
+        res = _gen_keystore_list(num_chars=1024, line_length=32, validate=validate)
         return res
     else:
         raise ImpossibleError('output must be either "raw" or "lines"')
 
-def gen_single_line_keystore(num_chars=500, validate=True, output='raw'):
+def gen_single_line_keystore(num_chars=1024, validate=True, output='raw'):
     if validate:
         SecretGarbageValidator.validate_output_param(output)
     line_length = None
@@ -165,7 +165,7 @@ def gen_single_line_keystore(num_chars=500, validate=True, output='raw'):
         raise ImpossibleError('output must be either "raw" or "lines"')
 
 
-def gen_keystore(num_chars=500, line_length=32, validate=True, output='lines', include_chars=DEFAULT_PERMISSIBLE_CHARS):
+def gen_keystore(num_chars=1024, line_length=32, validate=True, output='lines', include_chars=DEFAULT_PERMISSIBLE_CHARS):
     # ...again...not optional.
     SecretGarbageValidator.validate_line_related_params(line_length, output)
     if validate:
@@ -196,7 +196,7 @@ def gen_keystore(num_chars=500, line_length=32, validate=True, output='lines', i
 
 
 
-def gen_custom_char_keystore(include_chars, num_chars=500, line_length=32, validate=True, output='lines'):
+def gen_custom_char_keystore(include_chars, num_chars=1024, line_length=32, validate=True, output='lines'):
     """
     !WARNING!:
     You can only reduce the number of possible chars with this function.
