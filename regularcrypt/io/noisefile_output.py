@@ -1,4 +1,7 @@
 from __future__ import print_function, unicode_literals
+import os
+
+from regularcrypt.utils.validations import OutputValidator
 
 __doc__ = """
 Purpose:
@@ -42,3 +45,34 @@ Application:
        the `.openssh` default filetype is bad-enough on this front.
 
 """
+
+def file_out(data, filepath, open_mode, writelines=True, verbose=False):
+    OutputValidator.validate_writefunc_params(data=data, filepath=filepath, open_mode=open_mode)
+    with open(filepath, open_mode) as outfile:
+        if writelines:
+            outfile.writelines(data)
+        else:
+            outfile.write(data)
+    if verbose:
+        print("INFO: {} Written.".format(filepath))
+
+
+
+def join_path_and_save(root_dir, full_filename, overwrite_if_exists=False, verbose=False):
+    full_filepath = os.path.join(root_dir, full_filename)
+    file_exists_already = os.path.exists(full_filepath)
+    if file_exists_already:
+        if overwrite_if_exists:
+            print('WARN: {} already exists & will be overwritten.\n'.format(os.path.join(root_dir, full_filename)))
+            try:
+                input('\nPress ENTER to continue, Ctrl+C to exit.\n> ')
+            except KeyboardInterrupt:
+                exit(1)
+        else:
+            print('ERROR: {} already exists, & the flag allowing overwriting has not been set to True.')
+            exit(1)
+    else:
+        #Todo: idk...
+        pass
+
+

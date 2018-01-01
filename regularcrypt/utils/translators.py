@@ -43,7 +43,7 @@ class GarbageSaver(object):
             file_ext_regex = r'[^\.](\.\w+)$' # capture the last "." and everything after it.
             if re.search(file_ext_regex, filename):
                 file_ext = re.search(file_ext_regex, filename).group(1)
-                new_filename = filename[:int((-1 * len(file_ext)))]
+                new_filename = filename[:int((-1 * len(file_ext)))] # index is negative-length of file_ext
                 return new_filename, file_ext
             else:
                 return None

@@ -6,13 +6,13 @@ from regularcrypt.utils.custom_errors import NotYetImplementedError
 
 def make(parser_arguments):
     from regularcrypt.utils.translators import GarbageSaver
-    import regularcrypt.core.secret_garbage as sg_module
+    import regularcrypt.core.noisefile_gen as noise_maker
     _parser_argument_container = parser_arguments
     #TODO: fill this skeleton out.
     outfile_name = _parser_argument_container.outfile
     #TODO: Make a warning if the user doesn't EVER specify a file-extension that the default will be used.
     if not _parser_argument_container.string:
-        keystore = sg_module.gen_default_keystore()
+        keystore = noise_maker.make_all()
         saver = GarbageSaver(keystore_model=keystore, outfile_name=outfile_name)
         #TODO: make the following 2 lines uncomment-able.
         #saver.save_in_triplicate()
